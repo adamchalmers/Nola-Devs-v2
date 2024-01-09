@@ -59,11 +59,3 @@
 // 		return { success: false }; // wrong password or email
 // 	}
 // };
-
-import type { LayoutServerLoad } from "../(app)/$types";
-
-export const load: LayoutServerLoad = async (event) => {
-	return {
-		session: await event.locals.getSession()
-	};
-};
