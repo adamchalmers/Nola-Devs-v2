@@ -1,6 +1,4 @@
-<script>
-	import Login from '$lib/components/login.svelte';
-</script>
+
 
 <h1>Admin</h1>
 
@@ -16,5 +14,3 @@
 	</select>
 	<button type="submit">Login</button>
 </form>
-
-<!-- <Login /> -->
