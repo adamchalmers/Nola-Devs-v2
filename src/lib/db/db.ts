@@ -1,7 +1,22 @@
 import { connect } from 'mongoose';
-import { MONGO_URL, DB_NAME } from '$env/static/private';
+import { MONGO_URL, DB_NAME, CRON_SECRET } from '$env/static/private';
 
-// setting up the connection to the DB
+import { GroupModel } from './groups';
+import groups from '../../../static/data/groups.json';
+
 export const start_db = async () => {
-	return await connect(MONGO_URL + DB_NAME + DB_NAME).then(() => console.log('connected'));
+	return await connect(MONGO_URL + DB_NAME);
+};
+
+export const populate_db = async () => {
+	await GroupModel.insertMany(groups);
+};
+
+export const load_events = async () => {
+	await fetch('http://localhost:4173/api/cron', {
+		headers: {
+			authorization: `Bearer ${CRON_SECRET}`
+		},
+		method: 'GET'
+	});
 };
