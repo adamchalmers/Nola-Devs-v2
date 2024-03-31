@@ -1,4 +1,4 @@
-import mongoose, { model, Schema } from 'mongoose';
+import { model, Schema, models } from 'mongoose';
 import type { User } from '$lib/types/user.d.ts';
 
 const UserSchema = new Schema<User>({
@@ -32,5 +32,5 @@ const UserSchema = new Schema<User>({
 	}
 });
 
-const UserModel = mongoose.models.User || model('User', UserSchema);
+const UserModel = models.User || model('User', UserSchema);
 export default UserModel;

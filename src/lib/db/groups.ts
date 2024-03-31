@@ -1,5 +1,5 @@
 import slugify from 'slugify';
-import mongoose, { model, Schema } from 'mongoose';
+import { model, Schema, models } from 'mongoose';
 import type { Group } from '$lib/types/group.d.ts';
 
 const groupSchema = new Schema<Group>({
@@ -41,6 +41,6 @@ groupSchema.pre('save', function (next) {
 
 groupSchema.index({ slug: 1 });
 
-const GroupModel = mongoose.models.Group || model('Group', groupSchema);
+const GroupModel = models.Group || model('Group', groupSchema);
 
 export default GroupModel;

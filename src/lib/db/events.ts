@@ -1,4 +1,4 @@
-import mongoose, { model, Schema } from 'mongoose';
+import { model, Schema, models } from 'mongoose';
 import type { Event } from '$lib/types/event.d.ts';
 
 const eventSchema = new Schema<Event>({
@@ -26,6 +26,6 @@ const eventSchema = new Schema<Event>({
 	groupSlug: { type: String, required: true }
 });
 
-const EventModel = mongoose.models.Event || model('Event', eventSchema);
+const EventModel = models.Event || model('Event', eventSchema);
 
 export default EventModel;
