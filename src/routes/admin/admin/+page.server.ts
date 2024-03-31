@@ -6,17 +6,17 @@ import bcrypt from 'bcrypt';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies }) => {
-	const browserSes = cookies.get('session');
-	const dbSes = await SessionModel.findOne({ id: browserSes });
-	const user = await UserModel.findById(dbSes?.user);
+	// const browserSes = cookies.get('session');
+	//const dbSes = await SessionModel.findOne({ id: browserSes });
+	//const user = await UserModel.findById(dbSes?.user);
 
-	if (Number(dbSes?.expire) > Date.now() + 1000 * 60 * 60 * 24 * 30) {
-		await SessionModel.deleteOne({ id: browserSes });
-	}
+	// if (Number(dbSes?.expire) > Date.now() + 1000 * 60 * 60 * 24 * 30) {
+	// 	await SessionModel.deleteOne({ id: browserSes });
+	// }
 
-	if (dbSes?.id !== browserSes || !browserSes || user?.role !== 'admin') {
-		throw redirect(302, `/admin`);
-	}
+	// if (dbSes?.id !== browserSes || !browserSes || user?.role !== 'admin') {
+	// 	throw redirect(302, `/admin`);
+	// }
 	const users = (await UserModel.find({}).select(['name', 'email', 'role', '-_id'])).map((user) =>
 		user.toObject()
 	);
