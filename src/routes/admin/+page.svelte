@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { signIn, signOut } from '@auth/sveltekit/client';
+
 	import { Input, Select, Label, Button, Card } from 'flowbite-svelte';
 
 	let roles = [
@@ -45,4 +47,5 @@
 			<Button class="w-fit self-end" type="submit" value="LogIn">Log In</Button>
 		</form>
 	</Card>
+	<button class="text-red-100" on:click="{() => signIn('github')}">Sign In with GitHub</button>
 </div>
