@@ -13,6 +13,7 @@ type GroupLinkKey =
 type GroupLinks = { [key in GroupLinkKey]: string };
 
 export interface Group {
+	id: number;
 	group: string;
 	slug: string;
 	about: string;
