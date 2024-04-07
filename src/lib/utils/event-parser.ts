@@ -1,6 +1,7 @@
 import slugify from 'slugify';
 import type { googleCalAPIType } from '$lib/types/google-api.d.ts';
 import type { Event } from '$lib/types/event.d.ts';
+import { sanitizer } from './sanitize';
 import type { LngLatLike } from 'mapbox-gl';
 
 type geocodeOnEvent = googleCalAPIType & {
@@ -64,7 +65,7 @@ export const eventParser = (eventData: geocodeOnEvent | undefined): Partial<Even
 		group,
 		summary,
 		calLink,
-		description,
+		description: sanitizer(description),
 		location,
 		lnglat: convertToLngLat(lnglat),
 		start: startDate,

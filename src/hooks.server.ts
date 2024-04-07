@@ -18,13 +18,14 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
 	providers: [
 		Credentials({
 			credentials: {
-				username: { label: "Username" },
-				password: { label: "Password", type: "password" }
+				username: { label: "email" },
+				password: { label: "password", type: "password" }
 			},
-			async authorize({ request }) {
-				const response = await fetch(request)
-				if (!response.ok) return null
-				return await response.json() ?? null
+			async authorize(record) {
+				//const response = await fetch(record.username)
+				console.log(record)
+				//if(!response.ok) return null
+				return null
 			}
 		}),
 		Google({ clientId: "replace", clientSecret: "test" }),
@@ -37,6 +38,7 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
 		async signIn({ user, account, profile, isNewUser }) {
 			if (isNewUser) {
 				//user.role = 'organizer'
+				console.log(user)
 			}
 		},
 		async createUser(user) {

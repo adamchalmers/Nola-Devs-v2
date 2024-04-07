@@ -3,7 +3,7 @@
 	import Icon from '$lib/components/icon/index.svelte';
 	import Map from '$lib/components/map.svelte';
 
-	import { Sanitizer } from '$lib/utils/sanitize';
+	import { sanitizer } from '$lib/utils/sanitize';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -72,7 +72,7 @@
 				<h3 class="font-semibold text-lg border-b border-violet-200 pb-4">Event Description</h3>
 				<p class="text-base leading-6 dark:text-violet-200">
 					<!-- eslint-disable svelte/no-at-html-tags -->
-					{@html Sanitizer(description) || 'No description available'}
+					{@html sanitizer(description) || 'No description available'}
 				</p>
 			</section>
 		</article>
