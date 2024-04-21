@@ -8,8 +8,8 @@
 	export let events: Event[];
 </script>
 
-<section aria-labelledby="upcoming-events-heading" class="flex flex-col h-full overfloww-hidden">
-	<header class="flex flex-col gap-3 justify-center w-full mb-4">
+<section aria-labelledby="upcoming-events-heading" class="p-3 max-h-full">
+	<header class="flex flex-row justify-between">
 		<h2
 			class="text-2xl md:text-3xl font-semibold leading-[27px] text-[#24072F] dark:text-violet-100"
 		>
@@ -19,7 +19,7 @@
 			<EventSubmission />
 		</div>
 	</header>
-	<div class="flex flex-col gap-4 overflow-y-auto snap-both">
+	<div class="snap-both overflow-x-auto max-h-full p-2">
 		{#each events as event}
 			<div class="snap-start">
 				<EventCard {event} />

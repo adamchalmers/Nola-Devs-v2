@@ -11,8 +11,8 @@ export const eventController = {
 			const events: Event[] = await EventModel.find({})
 				.sort({ dateTime: 'asc' })
 				.select(['-_id', '-__v'])
-				.lean()
-				.limit(10);
+				.lean();
+			// .limit(10);
 			return events;
 		} catch (e) {
 			throw error(404, 'Group Not Found');
